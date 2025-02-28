@@ -85,11 +85,11 @@ if uploaded_files:
             buffer.seek(0)
           #Download Button
           st.download_button(
-                  label=f"Download {file.name} as {conversion_type}",
-                  data=buffer,
-                  file_name=file_name,
-                  mime=mime_type
-                )
+              label=f"Download {file.name} as {conversion_type}",
+              data=buffer,
+              file_name=file_name,
+              mime=mime_type
+            )
 
         st.success("All files processed successfully!")
 
