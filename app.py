@@ -58,14 +58,14 @@ if st.checkbox(f"clean data for{file.name}"):
             df[numeric_cols] = df[numeric_cols].fillna(df[numeric_cols].mean())
             st.write("✔Missing values have been filled! ")
       #choose specific columns to keep or convert
- st.subheader("🎯Select columns to keep")
- columns = st.multiselect(f"Choose columns for{file.name}",df.columns,default=df.columns)
+  st.subheader("🎯Select columns to keep")
+  columns = st.multiselect(f"Choose columns for{file.name}",df.columns,default=df.columns)
   df = df[columns]
 
     #Creat data visualization
- st.subheader ("📊Data Visualization")
- if st.checkbox(f"Show Visualization for{file.name}"):
-    st.bar_chart(df.select_dtypes(include='number').iloc[:,:2])
+  st.subheader ("📊Data Visualization")
+  if st.checkbox(f"Show Visualization for{file.name}"):
+     st.bar_chart(df.select_dtypes(include='number').iloc[:,:2])
 
    #Conversion option
   st.subheader("🔍Conversion Option")
