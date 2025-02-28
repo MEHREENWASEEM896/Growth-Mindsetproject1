@@ -43,7 +43,7 @@ st.dataframe(df.head())
 
 #Data cleaning option
 
-      st.subheader("🛠Data Cleaning Option")
+ st.subheader("🛠Data Cleaning Option")
       if st.checkbox(f"clean data for{file.name}"):
           col1,col2 = st.columns(2)
 
