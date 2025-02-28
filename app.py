@@ -43,51 +43,51 @@ st.dataframe(df.head())
 
 #Data cleaning option
 
- st.subheader("🛠Data Cleaning Option")
-      if st.checkbox(f"clean data for{file.name}"):
-          col1,col2 = st.columns(2)
+st.subheader("🛠Data Cleaning Option")
+    if st.checkbox(f"clean data for{file.name}"):
+        col1,col2 = st.columns(2)
 
-          with col1:
-              if st.button(f"Remove Duplicates from the files:{file.name}"):
-                 df.drop_duplicates(inplace=True)
-                 st.write("Duplicates Removed!")
+        with col1:
+            if st.button(f"Remove Duplicates from the files:{file.name}"):
+                df.drop_duplicates(inplace=True)
+                st.write("Duplicates Removed!")
 
-          with col2:
-              if st.button(f"fill missing values for:{file.name}"):
-                 numeric_cols = df.select_dtypes(include=['number']).columns
-                 df[numeric_cols] = df[numeric_cols].fillna(df[numeric_cols].mean())
-                 st.write("✔Missing values have been filled! ")
+        with col2:
+            if st.button(f"fill missing values for:{file.name}"):
+                numeric_cols = df.select_dtypes(include=['number']).columns
+                df[numeric_cols] = df[numeric_cols].fillna(df[numeric_cols].mean())
+                st.write("✔Missing values have been filled! ")
       #choose specific columns to keep or convert
-          st.subheader("🎯Select columns to keep")
-          columns = st.multiselect(f"Choose columns for{file.name}",df.columns,default=df.columns)
-          df = df[columns]
+        st.subheader("🎯Select columns to keep")
+        columns = st.multiselect(f"Choose columns for{file.name}",df.columns,default=df.columns)
+        df = df[columns]
 
     #Creat data visualization
-      st.subheader ("📊Data Visualization")
-      if st.checkbox(f"Show Visualization for{file.name}"):
-         st.bar_chart(df.select_dtypes(include='number').iloc[:,:2])
+    st.subheader ("📊Data Visualization")
+    if st.checkbox(f"Show Visualization for{file.name}"):
+       st.bar_chart(df.select_dtypes(include='number').iloc[:,:2])
 
    #Conversion option
-      st.subheader("🔍Conversion Option")
-      conversion_type = st.radio(f"convert{file.name} to:", ["CVS", "Excel"],key=file.name)
-      if st.button(f"Convert{file.name}"):
-          buffer = BytesIO()
-          if conversion_type =="CSV":
-              df.to_csv(buffer,index=False)
-              file_name = file.name.replace(file_ext, ".csv")
-              mime_type = "text/csv"
+    st.subheader("🔍Conversion Option")
+    conversion_type = st.radio(f"convert{file.name} to:", ["CVS", "Excel"],key=file.name)
+    if st.button(f"Convert{file.name}"):
+       buffer = BytesIO()
+       if conversion_type =="CSV":
+           df.to_csv(buffer,index=False)
+           file_name = file.name.replace(file_ext, ".csv")
+           mime_type = "text/csv"
 
-          elif conversion_type == "Excel":
-                df.to_excel(buffer,index=False)
-                file_name = file.name.replace(file_ext,".xlsx")
-                mime_type = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-          buffer.seek(0)
+       elif conversion_type == "Excel":
+             df.to_excel(buffer,index=False)
+             file_name = file.name.replace(file_ext,".xlsx")
+             mime_type = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+       buffer.seek(0)
           #Download Button
-          st.download_button(
-              label=f"Download {file.name} as {conversion_type}",
-              data=buffer,
-              file_name=file_name,
-              mime=mime_type
+       st.download_button(
+           label=f"Download {file.name} as {conversion_type}",
+           data=buffer,
+           file_name=file_name,
+           mime=mime_type
         )
 
     st.success("All files processed successfully!")
