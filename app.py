@@ -7,11 +7,11 @@ st.set_page_config(page_title="📀Data Sweeper" ,layout="wide" )
 
 #custom css
 st.markdown(
-"""
-<style>
-.stApp{
-background-color: black;
-color: white;
+    """
+    <style>
+   .stApp{
+       background-color: black;
+       color: white;
 }
 </style>
 
@@ -20,15 +20,14 @@ unsafe_allow_html=True
 ) 
 #Title & Discription
 st.title("📀Datasweeper Starling Integrator By Mehreen")
-
 st.write("Transform your files between CSV and Excel formats with built-in data cleaning and visualization!")
 
 #File uploader
 uploaded_files = st.file_uploader("Upload your Files(accepts CSV and Excel):",type=["csv", "xlsx"] , accept_multiple_files=(True))
 
 if uploaded_files:
-for file in uploaded_files:
-file_ext= os.path.splitext(file.name)[-1].lower()
+    for file in uploaded_files:
+        file_ext= os.path.splitext(file.name)[-1].lower()
 
 if file_ext == ".csv":
     df = pd.read_csv(file)
