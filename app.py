@@ -19,7 +19,10 @@ st.markdown(
     unsafe_allow_html=True
 ) 
 #Title & Discription
- st.title("📀Datasweeper Starling Integrator By Mehreen")
+ st.titleimport streamlit as st
+
+st.title("📀Datasweeper Starling Integrator By Mehreen")
+
  st.write("Transform your files between CSV and Excel formats with built-in data cleaning and visualization!")
 
 #File uploader
