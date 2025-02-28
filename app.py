@@ -24,10 +24,10 @@ st.title("📀Datasweeper Starling Integrator By Mehreen")
 st.write("Transform your files between CSV and Excel formats with built-in data cleaning and visualization!")
 
 #File uploader
-uploaded_files = st.files_uplader("Upload your Files(accepts CSV and Excel):",type=["cvs", "xlsx"] , accept_multiple_files=(True))
+uploaded_files = st.file_uplader("Upload your Files(accepts CSV and Excel):",type=["csv", "xlsx"] , accept_multiple_files=(True)
 
 if uploaded_files:
-for file in uploaded_files:
+   for file in uploaded_files:
     file_ext= os.path.splitext(file.name)[-1].lower()
 
     if file_ext == ".csv":
@@ -55,7 +55,7 @@ for file in uploaded_files:
 
         with col2:
             if st.button(f"fill missing values for:{file.name}"):
-                numeric_cols = df.select_dtypes(includes=['number']).columns
+                numeric_cols = df.select_dtypes(include=['number']).columns
                 df[numeric_cols] = df[numeric_cols].fillna(df[numeric_cols].mean())
                 st.write("✔Missing values have been filled! ")
           #choose specific columns to keep or convert
@@ -74,15 +74,15 @@ for file in uploaded_files:
         if st.button(f"Convert{file.name}"):
             buffer = BytesIO()
             if conversion_type =="CSV":
-               df.to.csv(buffer,index=False)
+               df.to_csv(buffer,index=False)
                file_name = file.name.replace(file_ext, ".csv")
                mime_type = "text/csv"
 
             elif conversion_type == "Excel":
-                df.to.to_excel(buffer,index=False)
-                file.name = file.name.replace(file_ext,".xlsx")
+                df.to_excel(buffer,index=False)
+                file_name = file.name.replace(file_ext,".xlsx")
                 mime_type = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-                buffer.seek(0)
+           buffer.seek(0)
           #Download Button
                 st.download_button(
                     label=f"Download {file.name} as {conversion_type}",
