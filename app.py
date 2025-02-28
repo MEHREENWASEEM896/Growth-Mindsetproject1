@@ -3,7 +3,7 @@ import pandas as pd
 import os
 from io import BytesIO
 
-st.set_page_config(page_title="📀DataSweeper" ,layout="wide" )
+st.set_page_config(page_title="📀Data Sweeper" ,layout="wide" )
 
 #custom css
 st.markdown(
@@ -19,7 +19,7 @@ st.markdown(
     unsafe_allow_html=True
 ) 
 #Title & Discription
-st.tittle("📀DataSweeper")
+st.tittle("📀Datasweeper")
 st.write("Transform your files between CSV and Excel formats with built-in data cleaning and visualization!")
 
 #File uploader
