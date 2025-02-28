@@ -38,8 +38,8 @@ if uploaded_files:
            continue
 
 #file details
-       st.write("🔍preview the head of the Dataframe")
-       st.dataframe(df.head())
+st.write("🔍preview the head of the Dataframe")
+st.dataframe(df.head())
 
 #Data cleaning option
 
