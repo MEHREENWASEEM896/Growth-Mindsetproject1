@@ -82,8 +82,8 @@ if st.checkbox(f"clean data for{file.name}"):
             file_name = file.name.replace(file_ext,".xlsx")
             mime_type = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
         buffer.seek(0)
-      #Download Button
-         st.download_button(
+          #Download Button
+        st.download_button(
             label=f"Download {file.name} as {conversion_type}",
             data=buffer,
             file_name=file_name,
