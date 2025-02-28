@@ -35,7 +35,7 @@ elif file_ext == "xlsx":
     df = pd.read_excel(file)
 else:
     st.error(f"unsupported file type:{file_ext}")
-    continue
+continue
 
 #file details
 st.write("🔍preview the head of the Dataframe")
